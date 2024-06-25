@@ -1,0 +1,37 @@
+package excelprojects;
+import java.io.*;
+import java.util.*;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+public class ExcelWriteAnData{
+
+	public static void main(String[] args){
+		try{
+			Scanner s=new Scanner(System.in);
+			System.out.println("Enter the Name: ");
+			String str=s.nextLine();
+			System.out.println("Added on Which row..?");
+			int r=s.nextInt();
+			System.out.println("Added on Which col..?");
+			int c=s.nextInt();
+			File file=new File("D:\\EXCEL2\\excel2.xlsx");
+			FileOutputStream fout=new FileOutputStream(file);
+			XSSFWorkbook xb=new XSSFWorkbook();
+			XSSFSheet xs=xb.createSheet("Student Name");
+			XSSFRow ro=xs.createRow(r);
+			XSSFCell ce=ro.createCell(c);
+			ce.setCellValue(str);
+			xb.write(fout);
+			fout.close();
+			System.out.println("Data Added SucessFully..!!");
+		}
+		catch(Exception obj){
+			obj.printStackTrace();
+		}
+		
+	}
+
+}
